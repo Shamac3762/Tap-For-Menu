@@ -3,179 +3,182 @@ import React from 'react'
 
 export default function TapForMenu() {
   return (
-    <div style={{ minHeight: '100vh', backgroundColor: '#FAF6F0', fontFamily: '"Georgia", serif', color: '#4A3B32', overflowX: 'hidden' }}>
+    <div style={{ minHeight: '100vh', backgroundColor: '#09090b', color: '#ffffff', overflowX: 'hidden' }}>
       <style>{`
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap');
         
-        /* Typography */
-        h1, h2, h3 { font-family: 'Georgia', serif; font-weight: 400; color: #2C221C; }
-        p, a, button, span, ul, li { font-family: '"Segoe UI", Roboto, Helvetica, Arial, sans-serif'; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
         
-        /* Nav */
-        .store-nav { padding: 25px 50px; display: flex; justify-content: space-between; align-items: center; background-color: transparent; position: absolute; top: 0; width: 100%; z-index: 50; }
-        .logo { font-size: 24px; color: #2C221C; letter-spacing: 1px; display: flex; align-items: center; text-decoration: none; font-weight: 600; }
+        /* Glass Navigation */
+        .store-nav { padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(9, 9, 11, 0.7); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .logo { font-size: 20px; color: #fff; letter-spacing: -0.5px; display: flex; align-items: center; text-decoration: none; font-weight: 700; }
         
         /* Buttons */
-        .btn-terracotta { background-color: #D97757; color: white; padding: 14px 28px; border-radius: 8px; font-weight: 600; font-size: 15px; cursor: pointer; border: none; transition: all 0.3s ease; text-decoration: none; display: inline-block; }
-        .btn-terracotta:hover { background-color: #C16648; transform: translateY(-2px); box-shadow: 0 8px 15px rgba(217, 119, 87, 0.2); }
+        .btn-primary { background-color: #ffffff; color: #09090b; padding: 14px 28px; border-radius: 4px; font-weight: 500; font-size: 15px; cursor: pointer; border: none; transition: all 0.3s ease; text-decoration: none; display: inline-block; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1); }
         
-        .btn-outline { background-color: transparent; color: #4A3B32; padding: 12px 26px; border-radius: 8px; font-weight: 600; font-size: 15px; cursor: pointer; border: 2px solid #4A3B32; transition: all 0.3s ease; text-decoration: none; display: inline-block; }
-        .btn-outline:hover { background-color: #4A3B32; color: #FAF6F0; }
+        .btn-outline { background-color: transparent; color: #ffffff; padding: 12px 26px; border-radius: 4px; font-weight: 500; font-size: 15px; cursor: pointer; border: 1px solid rgba(255,255,255,0.3); transition: all 0.3s ease; text-decoration: none; display: inline-block; }
+        .btn-outline:hover { background-color: #ffffff; color: #09090b; }
 
-        /* Hero */
-        .hero-section { padding: 160px 20px 100px 20px; max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 60px; align-items: center; }
-        .hero-text { flex: 1 1 500px; }
-        .hero-title { font-size: 64px; line-height: 1.1; margin-bottom: 25px; letter-spacing: -1px; }
-        .hero-subtitle { font-size: 18px; color: #69574D; line-height: 1.6; margin-bottom: 40px; font-weight: 400; max-width: 480px; }
-        
-        /* Wood/Image Frame Placeholder */
-        .image-frame { flex: 1 1 400px; height: 550px; background: linear-gradient(145deg, #e6dace, #f5ebd9); border-radius: 20px; box-shadow: 0 20px 40px rgba(44, 34, 28, 0.08); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; border: 8px solid white; }
+        /* Cinematic Hero Section */
+        .hero-section { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; position: relative; padding: 100px 20px 40px 20px; background: linear-gradient(rgba(9, 9, 11, 0.6), rgba(9, 9, 11, 1)), url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=2000&auto=format&fit=crop') center/cover; }
+        .hero-content { position: relative; z-index: 10; max-width: 800px; margin: 0 auto; }
+        .hero-badge { display: inline-block; padding: 6px 14px; border-radius: 50px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 24px; color: #a1a1aa; }
+        .hero-title { font-size: 72px; line-height: 1.05; margin-bottom: 24px; letter-spacing: -2.5px; font-weight: 700; color: #ffffff; }
+        .hero-subtitle { font-size: 20px; color: #a1a1aa; line-height: 1.6; margin-bottom: 40px; font-weight: 300; max-width: 600px; margin-left: auto; margin-right: auto; }
         
         /* Section Containers */
-        .section-padding { padding: 100px 20px; max-width: 1200px; margin: 0 auto; }
+        .section-padding { padding: 120px 20px; max-width: 1200px; margin: 0 auto; }
+        .section-title { font-size: 48px; letter-spacing: -1.5px; margin-bottom: 20px; font-weight: 700; }
+        
+        /* Image Split Section */
+        .split-section { display: flex; flex-wrap: wrap; gap: 60px; align-items: center; margin-bottom: 120px; }
+        .split-text { flex: 1 1 400px; }
+        .split-image { flex: 1 1 400px; height: 600px; border-radius: 8px; background: url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=1200&auto=format&fit=crop') center/cover; position: relative; }
         
         /* Feature Grid */
-        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 60px; }
-        .feature-card { padding: 40px; background-color: white; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); transition: transform 0.3s; }
-        .feature-card:hover { transform: translateY(-5px); }
-        .feature-icon { width: 50px; height: 50px; background-color: #FDF9F5; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 20px; color: #D97757; }
+        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
+        .feature-card { padding: 40px; background-color: #18181b; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); transition: transform 0.3s, border-color 0.3s; }
+        .feature-card:hover { transform: translateY(-5px); border-color: rgba(255,255,255,0.2); }
+        .feature-number { font-size: 14px; color: #71717a; margin-bottom: 20px; font-weight: 700; letter-spacing: 2px; }
+
+        /* Pricing Packages */
+        .pricing-card { background-color: #18181b; padding: 50px 40px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); text-align: left; transition: all 0.3s; }
+        .pricing-card:hover { border-color: rgba(255,255,255,0.2); }
+        .pricing-card.premium { background: linear-gradient(145deg, #18181b, #27272a); border-color: rgba(255,255,255,0.2); position: relative; }
+        .price-value { font-size: 48px; font-weight: 700; letter-spacing: -2px; margin: 20px 0; display: flex; align-items: baseline; gap: 8px; }
 
         @media (max-width: 768px) {
-          .store-nav { padding: 20px; }
-          .hero-section { padding: 120px 20px 60px 20px; }
-          .hero-title { font-size: 42px; }
-          .image-frame { height: 400px; }
+          .hero-title { font-size: 48px; }
+          .section-title { font-size: 36px; }
+          .split-image { height: 400px; }
         }
       `}</style>
 
       {/* --- NAVIGATION --- */}
       <nav className="store-nav">
         <a href="/" className="logo">
-          TapForMenu<span style={{ color: '#D97757' }}>.</span>
+          TAPFORMENU
         </a>
-        <a href="#packages" className="btn-outline" style={{ padding: '8px 20px' }}>View Packages</a>
+        <a href="#packages" className="btn-outline" style={{ padding: '8px 20px', fontSize: '13px' }}>View Packages</a>
       </nav>
 
-      {/* --- HERO SECTION --- */}
+      {/* --- CINEMATIC HERO SECTION --- */}
       <section className="hero-section">
-        <div className="hero-text">
-          <span style={{ fontSize: '13px', textTransform: 'uppercase', letterSpacing: '2px', color: '#D97757', fontWeight: '700', marginBottom: '15px', display: 'block' }}>
-            For Restaurants & Hospitality
-          </span>
+        <div className="hero-content">
+          <div className="hero-badge">The Future of Hospitality</div>
           <h1 className="hero-title">
-            Your menu, <br />
-            just a tap away.
+            Your menu.<br />Just a tap away.
           </h1>
           <p className="hero-subtitle">
-            Upgrade your venue with beautiful, wooden-finish NFC tags. Customers simply tap their phone to the table to view your menu instantly. No apps, no blurry QR codes, no sticky paper menus.
+            Upgrade your venue with premium NFC technology. Customers tap their phone to the table, and your menu appears instantly. No apps. No hunting for Wi-Fi. 
           </p>
-          <div style={{ display: 'flex', gap: '15px', flexWrap: 'wrap' }}>
-            <a href="#packages" className="btn-terracotta">Upgrade Your Tables</a>
-            <a href="#how-it-works" className="btn-outline" style={{ border: 'none', textDecoration: 'underline' }}>See how it works</a>
-          </div>
-        </div>
-
-        {/* This is where your AI-generated image will go. Just replace this div with an <img src="/your-image.jpg" /> later */}
-        <div className="image-frame">
-          <div style={{ textAlign: 'center', padding: '40px' }}>
-            <div style={{ fontSize: '64px', marginBottom: '20px' }}>📱✨🍽️</div>
-            <p style={{ fontFamily: '"Segoe UI", sans-serif', color: '#8B7365', fontSize: '14px', lineHeight: '1.5' }}>
-              [Insert Image Here: A warm, cinematic photo of an iPhone tapping a wooden NFC disk on a beautifully lit restaurant table, with the menu opening on the screen.]
-            </p>
+          <div style={{ display: 'flex', gap: '15px', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <a href="#packages" className="btn-primary">Upgrade Your Tables</a>
           </div>
         </div>
       </section>
 
-      {/* --- HOW IT WORKS / VALUE PROP --- */}
-      <section id="how-it-works" style={{ backgroundColor: '#2C221C', color: '#FAF6F0' }}>
-        <div className="section-padding">
-          <div style={{ textAlign: 'center', maxWidth: '700px', margin: '0 auto 60px auto' }}>
-            <h2 style={{ fontSize: '42px', color: '#FAF6F0', marginBottom: '20px' }}>The modern dining experience.</h2>
-            <p style={{ color: '#A89B93', fontSize: '18px', lineHeight: '1.6' }}>
-              Powered by Link Supply technology, you can manage the menus for your entire venue from one simple dashboard.
+      {/* --- SPLIT SHOWCASE --- */}
+      <section id="how-it-works" className="section-padding">
+        <div className="split-section">
+          <div className="split-text">
+            <h2 className="section-title">Kill the QR Code.</h2>
+            <p style={{ color: '#a1a1aa', fontSize: '18px', lineHeight: '1.6', marginBottom: '30px' }}>
+              Sticky, peeling paper menus and blurry QR codes belong in the past. Powered by the Link Supply ecosystem, TapForMenu lets you place sleek, un-intrusive NFC tags across your venue.
+            </p>
+            <p style={{ color: '#a1a1aa', fontSize: '18px', lineHeight: '1.6', marginBottom: '40px' }}>
+              Changed your specials? 86'd a dish? Update the link in your dashboard, and all 50 tables update instantly in real-time without reprinting a single piece of paper.
+            </p>
+            <a href="#packages" className="btn-outline">See Pricing</a>
+          </div>
+          <div className="split-image"></div>
+        </div>
+
+        {/* --- FEATURE GRID --- */}
+        <div className="feature-grid">
+          <div className="feature-card">
+            <div className="feature-number">01 // PLACEMENT</div>
+            <h3 style={{ fontSize: '24px', marginBottom: '15px', fontWeight: '500' }}>Stick and Forget</h3>
+            <p style={{ color: '#a1a1aa', fontSize: '15px', lineHeight: '1.6' }}>
+              Our durable, waterproof NFC tags mount seamlessly to tables, bar tops, or host stands, blending in perfectly with premium venue decor.
+            </p>
+          </div>
+          
+          <div className="feature-card">
+            <div className="feature-number">02 // INTERACTION</div>
+            <h3 style={{ fontSize: '24px', marginBottom: '15px', fontWeight: '500' }}>Instant Access</h3>
+            <p style={{ color: '#a1a1aa', fontSize: '15px', lineHeight: '1.6' }}>
+              Guests simply hover their iPhone or Android over the tag. The native OS picks it up immediately—zero app downloads required.
             </p>
           </div>
 
-          <div className="feature-grid">
-            <div className="feature-card" style={{ backgroundColor: '#382D26', color: '#FAF6F0', boxShadow: 'none' }}>
-              <div className="feature-icon" style={{ backgroundColor: '#4A3B32', color: '#FAF6F0' }}>1</div>
-              <h3 style={{ color: '#FAF6F0', fontSize: '22px', marginBottom: '15px' }}>Place the Tags</h3>
-              <p style={{ color: '#A89B93', fontSize: '15px', lineHeight: '1.6' }}>
-                Stick our durable, waterproof NFC tags to your tables, bar top, or host stand. They blend perfectly with upscale decor.
-              </p>
-            </div>
-            
-            <div className="feature-card" style={{ backgroundColor: '#382D26', color: '#FAF6F0', boxShadow: 'none' }}>
-              <div className="feature-icon" style={{ backgroundColor: '#4A3B32', color: '#FAF6F0' }}>2</div>
-              <h3 style={{ color: '#FAF6F0', fontSize: '22px', marginBottom: '15px' }}>Customers Tap</h3>
-              <p style={{ color: '#A89B93', fontSize: '15px', lineHeight: '1.6' }}>
-                Guests simply hover their iPhone or Android over the tag. No app downloads required, and no hunting for Wi-Fi.
-              </p>
-            </div>
-
-            <div className="feature-card" style={{ backgroundColor: '#382D26', color: '#FAF6F0', boxShadow: 'none' }}>
-              <div className="feature-icon" style={{ backgroundColor: '#4A3B32', color: '#FAF6F0' }}>3</div>
-              <h3 style={{ color: '#FAF6F0', fontSize: '22px', marginBottom: '15px' }}>Update Instantly</h3>
-              <p style={{ color: '#A89B93', fontSize: '15px', lineHeight: '1.6' }}>
-                Changed your specials? Log into your dashboard and update the routing link. All 50 tables update instantly without reprinting anything.
-              </p>
-            </div>
+          <div className="feature-card">
+            <div className="feature-number">03 // CONTROL</div>
+            <h3 style={{ fontSize: '24px', marginBottom: '15px', fontWeight: '500' }}>Live Updates</h3>
+            <p style={{ color: '#a1a1aa', fontSize: '15px', lineHeight: '1.6' }}>
+              Log into your Link Supply dashboard to redirect the tag instantly. Complete control over your entire floor's digital routing.
+            </p>
           </div>
         </div>
       </section>
 
       {/* --- PRICING PACKAGES --- */}
-      <section id="packages" className="section-padding">
-        <div style={{ textAlign: 'center', marginBottom: '60px' }}>
-          <h2 style={{ fontSize: '42px', marginBottom: '15px' }}>Venue Packages</h2>
-          <p style={{ color: '#69574D', fontSize: '18px' }}>Includes premium hardware and full access to the management dashboard.</p>
+      <section id="packages" className="section-padding" style={{ backgroundColor: '#000000' }}>
+        <div style={{ textAlign: 'center', marginBottom: '80px', maxWidth: '700px', margin: '0 auto 80px auto' }}>
+          <h2 className="section-title">Hardware Packages</h2>
+          <p style={{ color: '#a1a1aa', fontSize: '18px' }}>Includes premium NFC hardware and full access to the cloud management dashboard.</p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '30px', maxWidth: '900px', margin: '0 auto' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '30px', maxWidth: '1000px', margin: '0 auto' }}>
           
           {/* Cafe Package */}
-          <div style={{ backgroundColor: 'white', padding: '40px', borderRadius: '16px', border: '1px solid #E6DACE', textAlign: 'center' }}>
-            <h3 style={{ fontSize: '24px', marginBottom: '10px' }}>The Café</h3>
-            <div style={{ fontSize: '42px', color: '#2C221C', marginBottom: '20px' }}>15 Tags</div>
-            <p style={{ color: '#69574D', fontSize: '15px', marginBottom: '30px', minHeight: '45px' }}>Perfect for coffee shops, small pubs, and intimate venues.</p>
+          <div className="pricing-card">
+            <h3 style={{ fontSize: '24px', color: '#a1a1aa', fontWeight: '400' }}>The Café</h3>
+            <div className="price-value">15 <span style={{ fontSize: '20px', color: '#71717a', fontWeight: '400' }}>Tags</span></div>
+            <p style={{ color: '#71717a', fontSize: '15px', marginBottom: '40px', paddingBottom: '30px', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+              Perfect for coffee shops, small pubs, and intimate venues.
+            </p>
             
-            <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 40px 0', textAlign: 'left', color: '#4A3B32', fontSize: '15px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
-              <li>✓ 15 Waterproof Table Tags</li>
-              <li>✓ 1 Management Dashboard</li>
-              <li>✓ Instant Link Updating</li>
-              <li>✓ Tap Analytics</li>
+            <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 40px 0', color: '#e4e4e7', fontSize: '15px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              <li style={{ display: 'flex', gap: '10px' }}><span style={{ color: '#ffffff' }}>✦</span> 15 Waterproof Table Tags</li>
+              <li style={{ display: 'flex', gap: '10px' }}><span style={{ color: '#ffffff' }}>✦</span> Cloud Management Dashboard</li>
+              <li style={{ display: 'flex', gap: '10px' }}><span style={{ color: '#ffffff' }}>✦</span> Instant Link Routing</li>
+              <li style={{ display: 'flex', gap: '10px' }}><span style={{ color: '#ffffff' }}>✦</span> Basic Tap Analytics</li>
             </ul>
             
-            <a href="https://linksupply.co.uk/register" className="btn-outline" style={{ width: '100%', display: 'block' }}>Select Package</a>
+            <a href="https://linksupply.co.uk/register" className="btn-outline" style={{ width: '100%', textAlign: 'center' }}>Select Package</a>
           </div>
 
           {/* Restaurant Package */}
-          <div style={{ backgroundColor: '#FAF6F0', padding: '40px', borderRadius: '16px', border: '2px solid #D97757', textAlign: 'center', position: 'relative', boxShadow: '0 20px 40px rgba(44, 34, 28, 0.05)' }}>
-            <div style={{ position: 'absolute', top: '-15px', left: '50%', transform: 'translateX(-50%)', backgroundColor: '#D97757', color: 'white', fontSize: '12px', fontWeight: '700', padding: '6px 16px', borderRadius: '20px', textTransform: 'uppercase', letterSpacing: '1px' }}>
+          <div className="pricing-card premium">
+            <div style={{ position: 'absolute', top: '-12px', right: '30px', backgroundColor: '#ffffff', color: '#000000', fontSize: '12px', fontWeight: '700', padding: '6px 12px', borderRadius: '4px', textTransform: 'uppercase', letterSpacing: '1px' }}>
               Most Popular
             </div>
-            <h3 style={{ fontSize: '24px', marginBottom: '10px' }}>The Restaurant</h3>
-            <div style={{ fontSize: '42px', color: '#2C221C', marginBottom: '20px' }}>50 Tags</div>
-            <p style={{ color: '#69574D', fontSize: '15px', marginBottom: '30px', minHeight: '45px' }}>Designed for full-service restaurants and busy hospitality groups.</p>
+            <h3 style={{ fontSize: '24px', color: '#ffffff', fontWeight: '400' }}>The Restaurant</h3>
+            <div className="price-value">50 <span style={{ fontSize: '20px', color: '#71717a', fontWeight: '400' }}>Tags</span></div>
+            <p style={{ color: '#a1a1aa', fontSize: '15px', marginBottom: '40px', paddingBottom: '30px', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
+              Designed for full-service restaurants and hospitality groups.
+            </p>
             
-            <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 40px 0', textAlign: 'left', color: '#4A3B32', fontSize: '15px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
-              <li>✓ 50 Waterproof Table Tags</li>
-              <li>✓ Custom Branding Options</li>
-              <li>✓ 1 Management Dashboard</li>
-              <li>✓ Instant Link Updating</li>
-              <li>✓ Advanced Analytics</li>
+            <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 40px 0', color: '#e4e4e7', fontSize: '15px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              <li style={{ display: 'flex', gap: '10px' }}><span style={{ color: '#ffffff' }}>✦</span> 50 Premium Table Tags</li>
+              <li style={{ display: 'flex', gap: '10px' }}><span style={{ color: '#ffffff' }}>✦</span> Custom Branding Options</li>
+              <li style={{ display: 'flex', gap: '10px' }}><span style={{ color: '#ffffff' }}>✦</span> Cloud Management Dashboard</li>
+              <li style={{ display: 'flex', gap: '10px' }}><span style={{ color: '#ffffff' }}>✦</span> Instant Link Routing</li>
+              <li style={{ display: 'flex', gap: '10px' }}><span style={{ color: '#ffffff' }}>✦</span> Advanced Tap Analytics</li>
             </ul>
             
-            <a href="https://linksupply.co.uk/register" className="btn-terracotta" style={{ width: '100%', display: 'block' }}>Select Package</a>
+            <a href="https://linksupply.co.uk/register" className="btn-primary" style={{ width: '100%', textAlign: 'center' }}>Select Package</a>
           </div>
 
         </div>
       </section>
 
       {/* --- FOOTER --- */}
-      <footer style={{ backgroundColor: '#2C221C', color: '#A89B93', padding: '60px 20px', textAlign: 'center' }}>
-        <a href="/" className="logo" style={{ color: '#FAF6F0', justifyContent: 'center', marginBottom: '20px' }}>
-          TapForMenu<span style={{ color: '#D97757' }}>.</span>
+      <footer style={{ backgroundColor: '#09090b', color: '#71717a', padding: '60px 20px', borderTop: '1px solid rgba(255,255,255,0.05)', textAlign: 'center' }}>
+        <a href="/" className="logo" style={{ color: '#ffffff', justifyContent: 'center', marginBottom: '20px', fontSize: '16px' }}>
+          TAPFORMENU
         </a>
         <p style={{ fontSize: '14px' }}>Powered by Link Supply Ecosystem.</p>
         <p style={{ fontSize: '14px', marginTop: '10px' }}>© 2026 TapForMenu. All rights reserved.</p>
